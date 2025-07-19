@@ -5,7 +5,7 @@
 Open a terminal, go to the backend directory and run:
 
 ```bash
-npm run install
+npm install
 npm run dev
 ```
 
