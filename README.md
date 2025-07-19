@@ -16,6 +16,7 @@ This will run the server in development mode. When the server first initializes 
 Open another terminal and run:
 
 ```bash
+npm install
 npm run build
 npx vite preview
 ```
