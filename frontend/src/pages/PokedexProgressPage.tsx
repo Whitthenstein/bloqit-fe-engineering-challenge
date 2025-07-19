@@ -6,8 +6,8 @@ import type { Pokemon } from "../types";
 import PokedexProgressBar from "../components/PokedexProgressBar";
 import PokemonCard from "../components/PokemonCard";
 import { useMediaQuery } from "react-responsive";
+import { BASE_API_URL } from "../utils/constants";
 
-const API_URL = "http://localhost:5000/api/pokemon-caught";
 const LIMIT = 20;
 
 const PokedexProgressPage: React.FC = () => {
@@ -32,7 +32,7 @@ const PokedexProgressPage: React.FC = () => {
             setLoading(true);
 
             const response = await axios.get<Pokemon[]>(
-                `${API_URL}?limit=${LIMIT}&offset=${offset}`
+                `${BASE_API_URL}/pokemon-caught?limit=${LIMIT}&offset=${offset}`
             );
             const newPokemons = response.data;
 

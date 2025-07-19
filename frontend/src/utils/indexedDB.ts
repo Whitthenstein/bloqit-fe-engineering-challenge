@@ -1,6 +1,7 @@
 import { openDB } from "idb";
 import type { Pokemon } from "../types";
 import axios from "axios";
+import { BASE_API_URL } from "./constants";
 
 const DB_NAME = "pokeDB";
 const STORE_NAME = "pokemonStore";
@@ -44,9 +45,7 @@ export async function getPokemonById(
     if (cachedPokemon) {
         return cachedPokemon;
     } else {
-        const res = await axios.get(
-            `http://localhost:5000/api/pokemon/${pokemonId}`
-        );
+        const res = await axios.get(`${BASE_API_URL}/pokemon/${pokemonId}`);
 
         return res.data;
     }

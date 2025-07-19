@@ -5,12 +5,15 @@ import { getStat } from "../utils/helper";
 import Pokeball from "./Pokeball";
 import usePokemonData from "../hooks/usePokemonData";
 
-interface Props {
+type PokemonTableProps = {
     pokemons: Pokemon[];
     toggleSelect?: (id: number) => void;
-}
+};
 
-const PokemonTable: React.FC<Props> = ({ pokemons, toggleSelect }) => {
+const PokemonTable: React.FC<PokemonTableProps> = ({
+    pokemons,
+    toggleSelect
+}) => {
     const { updatePokemon } = usePokemonData();
     const navigate = useNavigate();
     const [pokemonNotes, setPokemonNotes] = useState<{ [id: number]: string }>(

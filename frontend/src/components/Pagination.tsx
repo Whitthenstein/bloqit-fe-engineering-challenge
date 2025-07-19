@@ -1,13 +1,17 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 
-type Props = {
+type PaginationProps = {
     setPage: (v: number) => void;
     pageCount: number;
     currentPage: number;
 };
 
-const Pagination: React.FC<Props> = ({ pageCount, setPage, currentPage }) => {
+const Pagination: React.FC<PaginationProps> = ({
+    pageCount,
+    setPage,
+    currentPage
+}) => {
     return (
         <section className="mt-4 flex justify-center">
             <ReactPaginate

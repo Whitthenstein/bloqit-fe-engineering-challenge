@@ -1,10 +1,14 @@
-type Props = {
+type PokeballProps = {
     className?: string;
     isGrayscale: boolean;
     style?: React.CSSProperties;
 };
 
-function Pokeball({ className, isGrayscale, style }: Props) {
+const Pokeball: React.FC<PokeballProps> = ({
+    className,
+    isGrayscale,
+    style
+}) => {
     return (
         <img
             style={style}
@@ -13,6 +17,6 @@ function Pokeball({ className, isGrayscale, style }: Props) {
             alt="Pokeball"
         />
     );
-}
+};
 
 export default Pokeball;

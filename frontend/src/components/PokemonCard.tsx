@@ -5,13 +5,13 @@ import { getStat } from "../utils/helper";
 import Pokeball from "./Pokeball";
 import usePokemonData from "../hooks/usePokemonData";
 
-interface Props {
+type PokemonCardProps = {
     pokemon: Pokemon;
     toggleSelect?: (id: number) => void;
     isCondensed: boolean;
-}
+};
 
-const PokemonCard: React.FC<Props> = ({
+const PokemonCard: React.FC<PokemonCardProps> = ({
     pokemon,
     toggleSelect,
     isCondensed

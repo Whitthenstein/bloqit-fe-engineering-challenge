@@ -1,6 +1,6 @@
 import { formatLabel } from "../utils/helper";
 
-interface FiltersProps<T extends string> {
+type FiltersProps<T extends string> = {
     filterName: string;
     filterHeight: number | null;
     filterType: string | null;
@@ -17,9 +17,9 @@ interface FiltersProps<T extends string> {
     canRemove: boolean;
     onUndo: () => void;
     removedCount: number;
-}
+};
 
-function Filters<T extends string>({
+const Filters = <T extends string>({
     filterName,
     filterHeight,
     filterType,
@@ -36,7 +36,7 @@ function Filters<T extends string>({
     canRemove,
     onUndo,
     removedCount
-}: FiltersProps<T>) {
+}: FiltersProps<T>) => {
     return (
         <section className="mb-4 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -113,6 +113,6 @@ function Filters<T extends string>({
             </button>
         </section>
     );
-}
+};
 
 export default Filters;

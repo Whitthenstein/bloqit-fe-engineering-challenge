@@ -12,6 +12,7 @@ const DownloadCSVButton = <T extends object>({
     const downloadCSV = () => {
         if (!data || data.length === 0) return;
 
+        // remove unnecessary info for CSV
         const filteredKeys = Object.keys(data[0]).filter(
             (key) => key !== "isSelected" && key !== "isVisible"
         );

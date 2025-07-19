@@ -8,10 +8,9 @@ import {
     getPokemonById
 } from "../utils/indexedDB";
 import type { Pokemon } from "../types";
+import { BASE_API_URL } from "../utils/constants";
 
 const BATCH_SIZE = 100;
-
-const API_URL = "http://localhost:5000";
 
 export default function usePokemonData() {
     const [detailedList, setDetailedList] = useState<Pokemon[]>([]);
@@ -54,7 +53,7 @@ export default function usePokemonData() {
     // Fetch batch function
     const fetchBatch = useCallback(async (offset: number, limit: number) => {
         const res = await axios.get(
-            `${API_URL}/api/pokemon?limit=${limit}&offset=${offset}`
+            `${BASE_API_URL}/pokemon?limit=${limit}&offset=${offset}`
         );
 
         const batchBasic = res.data;
@@ -79,7 +78,7 @@ export default function usePokemonData() {
         await clearPokemons();
 
         const totalPokemonResponse = await axios.get(
-            `${API_URL}/api/pokedex/total`
+            `${BASE_API_URL}/pokedex/total`
         );
         const totalPokemon = totalPokemonResponse.data.total;
 
@@ -113,7 +112,7 @@ export default function usePokemonData() {
             const oldPokemon = await getPokemonById(pokemonId);
 
             const response = await axios.patch(
-                `${API_URL}/api/pokemon/${pokemonId}`,
+                `${BASE_API_URL}/pokemon/${pokemonId}`,
                 {
                     notes: newNotes,
                     caughtAt: newCaughtAt || oldPokemon?.caughtAt

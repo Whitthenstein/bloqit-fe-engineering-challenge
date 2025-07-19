@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Pokeball from "./Pokeball";
-
-const API_URL = "http://localhost:5000/api/pokedex/progress";
+import { BASE_API_URL } from "../utils/constants";
 
 const PokedexProgressBar: React.FC = () => {
     const [progress, setProgress] = useState<number>(0);
@@ -11,7 +10,9 @@ const PokedexProgressBar: React.FC = () => {
     useEffect(() => {
         const fetchProgress = async () => {
             try {
-                const res = await axios.get<{ progress: number }>(API_URL);
+                const res = await axios.get<{ progress: number }>(
+                    `${BASE_API_URL}/pokedex/progress`
+                );
                 setProgress(res.data.progress); // Expecting a number from 0 to 100
             } catch (err) {
                 console.error("Failed to fetch progress:", err);
